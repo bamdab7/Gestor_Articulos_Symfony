@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 class ArticuloType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -17,9 +19,26 @@ class ArticuloType extends AbstractType
             ->add('texto')
             ->add('comentario')
             ->add('resumen')
-            ->add('categoria')
+            ->add('categoria',ChoiceType::class,[ //creacion del desplegable del form de las categorias
+                'choices'=>[
+                    'Opinión'=>1,
+                    'Divulgación'=>2,
+                    'Informativo'=>3,
+                    'Reportaje'=>4,
+                    'Editorial'=>5,
+                    'Columna'=>6,
+                    'Entrevista'=>7,
+                    'Critica'=>8,
+                    'Otros'=>9,
+                ],
+            ])
             ->add('url')
-            ->add('medio')
+            ->add('medio',ChoiceType::class,[
+                'choices'=>[
+                    'Papel'=>1,
+                    'Digital'=>2,
+                ],
+            ])
         ;
     }
 
