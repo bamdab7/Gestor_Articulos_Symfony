@@ -14,7 +14,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="container">
+    <body class="container-fluid">
+        <div class="row bg-secondary">
+            <div class="col-11 ps-5">
+                <h1 class='display-3 text-center'>Mi repertorio</h1>
+            </div>
+            <div class="col-1 mt-4">
+                <a class="btn btn-outline-info" href="/formulario" role="button">+</a> <!--A DE TIPO BUTTON-->
+            </div>
+        </div>
         {% block body %}{% endblock %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>

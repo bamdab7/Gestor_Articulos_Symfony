@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Mi repertorio{% endblock %}
+
+    {% block body %} 
+        
+
+        <div class="row">
+            <div class="col-3"> <!--listado de categorias, columna separatoria-->
+                <div class="ms-1 mt-1 me-1 mb-3"> <!--EL PROPIO LIST GROUP-->
+                    
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">  
+                            <p>Todos</p>
+                        </a> 
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">  
+                            <p>Opinión</p>
+                        </a> 
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Divulgación</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Informativo</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Reportaje</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Editorial</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Columna</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Entrevista</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Critica</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                            <p>Otros</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9"> <!--Bucle de articulos en la base de datos -->
+                <h1 class="display-5">Categoría/Todo</h1> <!--el texto cambia en funcion de la categoria seleccionada -->
+                <!--comienzo del bucle -->
+                {% for articulo in articulos %}
+    
+                <div class="row mb-2">
+                <!--INFORMACION DEL ARTICULO-->
+                    <div class="col-10">
+                        <h2>{{articulo.titulo}}</h2>
+                    </div>
+                    <div class="col-2">
+                        <p>{{articulo.fecha|date('d-m-Y')}}</p>
+                    </div>
+                    <div class="row"> <!--TEXTO-->
+                        <p>{{articulo.resumen}}</p>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-3 d-flex justify-content-end">
+                            <a class="btn btn-outline-info" href="/articulo/{{articulo.id}}" role="button">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+    {% endblock %}

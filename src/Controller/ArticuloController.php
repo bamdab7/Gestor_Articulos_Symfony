@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticuloController extends AbstractController
 {
     #[Route('/formulario', name: 'formulario')]
-    public function formulario(Request $request, ManagerRegistry $doctrine): Response{
+    public function formulario(Request $request, ManagerRegistry $doctrine): Response{ //AÑADIR
 
         $entityManager = $doctrine->getManager();
 
@@ -30,14 +30,14 @@ class ArticuloController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('formulario');
+            return $this->redirectToRoute('listar');
         }
         //ahora le devolvemos la vista del formulario
         return $this-> renderForm('formulario.html.twig',['form'=> $form,]);
     }
 
     #[Route('/formulario/eliminar/{id}',name:'eliminar')]
-    public function eliminar(ManagerRegistry $doctrine,int $id): Response {
+    public function eliminar(ManagerRegistry $doctrine,int $id): Response { //ELIMINAR
 
         $entityManager=$doctrine->getManager();
 
@@ -50,7 +50,7 @@ class ArticuloController extends AbstractController
     }
 
     #[Route("formulario/editar/{id}",name:'editar')]
-    public function editar(ManagerRegistry $doctrine, int $id, Request $request): Response {
+    public function editar(ManagerRegistry $doctrine, int $id, Request $request): Response { //EDITAR
 
         $entityManager=$doctrine->getManager();
         $articulo = $entityManager->getRepository(Articulo::class)->find($id);
@@ -72,5 +72,31 @@ class ArticuloController extends AbstractController
         return $this-> renderForm('formulario.html.twig',['form'=> $form,]);
         
     }
+
+    #[Route("/",name:'listar')]
+    public function listar(ManagerRegistry $doctrine, Request $request): Response { //DESPLEGAR NUEVA VISTA DE LISTADO
+
+        $entityManager=$doctrine->getManager();
+        $listaArticulos = $entityManager->getRepository(Articulo::class)->findAll();
+        
+        //ahora le devolvemos la vista del formulario
+        return $this-> renderForm('listadoArticulos.html.twig',['articulos'=> $listaArticulos,]);
+        
+    }
+
+    #[Route("/articulo/{id}",name:'detalle')]
+    public function detalle(ManagerRegistry $doctrine,int $id, Request $request): Response { //DESPLEGAR NUEVA VISTA DE LISTADO
+
+        $entityManager=$doctrine->getManager();
+        $articulo = $entityManager->getRepository(Articulo::class)->find($id);
+        
+        //ahora le devolvemos la vista del formulario
+        return $this-> renderForm('detalleArticulo.html.twig',['articulos'=> $articulo,]);
+        
+    }
+
+    
+    
+    
 
 }
