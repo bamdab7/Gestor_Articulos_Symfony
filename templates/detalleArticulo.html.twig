@@ -1,1 +1,43 @@
 {% extends  'base.html.twig' %}
+
+    {% block body %}
+
+        <div class="container">
+            <div class="row"> <!--primera parte del detalle, nombre articulo + fecha -->
+                <div class="col-10">
+                    <h1 class="display-4">{{articulo.titulo}}</h1>
+                </div>
+                <div class="col-2">
+                    <p class="lead mt-4">{{articulo.fecha|date('d-m-Y')}}</p>
+                </div>
+            </div>
+            <div class="row"> <!--segunda parte del detalle, resumen -->
+                <p class="lead">Resumen: {{articulo.resumen}}</p>
+            </div>
+            <div class="row"> <!--tercera parte del detalle, categoria, medio y comentarios-->
+                <div class="col-3">
+                    <p class="lead">Categoría: {{articulo.categoria}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="lead">Categoría: {{articulo.medio}}</p>
+                </div>
+                <div class="col-6">
+                    <p class="lead">Comentarios: {{articulo.comentario}}</p>
+                </div>
+            </div>
+            <div class="row">  <!--cuarta parte del detalle, texto sobre el articulo-->
+                <p class="lead border border-5">{{articulo.texto}}</p>
+            <div>
+            <div class="row"> <!--ultima parte, url y botones eliminar y editar-->
+                <div class="col-6">
+                    <p class="lead"><a href="#">{{articulo.url}}<a></p>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-outline-info" href="/formulario/editar/{{articulo.id}}" role="button">Editar</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-outline-info" href="/formulario/eliminar/{{articulo.id}}" role="button">Eliminar</a>
+                </div>
+            </div>
+
+    {% endblock %}

@@ -85,13 +85,13 @@ class ArticuloController extends AbstractController
     }
 
     #[Route("/articulo/{id}",name:'detalle')]
-    public function detalle(ManagerRegistry $doctrine,int $id, Request $request): Response { //DESPLEGAR NUEVA VISTA DE LISTADO
+    public function detalle(ManagerRegistry $doctrine,int $id, Request $request): Response { 
 
         $entityManager=$doctrine->getManager();
-        $articulo = $entityManager->getRepository(Articulo::class)->find($id);
+        $articulo = $entityManager->getRepository(Articulo::class)->find($id); //buscamos articulo por el id
         
         //ahora le devolvemos la vista del formulario
-        return $this-> renderForm('detalleArticulo.html.twig',['articulos'=> $articulo,]);
+        return $this-> renderForm('detalleArticulo.html.twig',['articulo'=> $articulo,]); //aqui vamos al detalle del producto
         
     }
 

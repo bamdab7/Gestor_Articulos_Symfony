@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-9"> <!--Bucle de articulos en la base de datos -->
-                <h1 class="display-5">Categoría/Todo</h1> <!--el texto cambia en funcion de la categoria seleccionada -->
+                <h1 class="display-5 mb-3">Categoría/Todo</h1> <!--el texto cambia en funcion de la categoria seleccionada -->
                 <!--comienzo del bucle -->
                 {% for articulo in articulos %}
     
@@ -56,10 +56,10 @@
                         <h2>{{articulo.titulo}}</h2>
                     </div>
                     <div class="col-2">
-                        <p>{{articulo.fecha|date('d-m-Y')}}</p>
+                        <p class="lead mt-4">{{articulo.fecha|date('d-m-Y')}}</p>
                     </div>
                     <div class="row"> <!--TEXTO-->
-                        <p>{{articulo.resumen}}</p>
+                        <p class="lead">{{articulo.resumen}}</p>
                     </div>
                     <div class="row d-flex justify-content-end">
                         <div class="col-3 d-flex justify-content-end">

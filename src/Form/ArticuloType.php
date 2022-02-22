@@ -21,22 +21,22 @@ class ArticuloType extends AbstractType
             ->add('resumen')
             ->add('categoria',ChoiceType::class,[ //creacion del desplegable del form de las categorias
                 'choices'=>[
-                    'Opinión'=>1,
-                    'Divulgación'=>2,
-                    'Informativo'=>3,
-                    'Reportaje'=>4,
-                    'Editorial'=>5,
-                    'Columna'=>6,
-                    'Entrevista'=>7,
-                    'Critica'=>8,
-                    'Otros'=>9,
+                    'Opinión'=>'opinion',
+                    'Divulgación'=>'divulgacion',
+                    'Informativo'=>'informativo',
+                    'Reportaje'=>'reportaje',
+                    'Editorial'=>'editorial',
+                    'Columna'=>'columna',
+                    'Entrevista'=>'entrevista',
+                    'Critica'=>'critica',
+                    'Otros'=>'otros',
                 ],
             ])
             ->add('url')
             ->add('medio',ChoiceType::class,[
                 'choices'=>[
-                    'Papel'=>1,
-                    'Digital'=>2,
+                    'Papel'=>'papel',
+                    'Digital'=>'digital',
                 ],
             ])
             ->add('guardar', SubmitType::class)
