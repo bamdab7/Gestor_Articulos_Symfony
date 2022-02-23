@@ -61,11 +61,8 @@ class ArticuloController extends AbstractController
         if($form->isSubmitted()&& $form->isValid()){
             //si devuelve falso es que no se ha creado, asi que se crea el formulario y se renderiza
             $articulo=$form->getData();
-
             $entityManager->persist($articulo);
-
             $entityManager->flush();
-
             return $this->redirectToRoute('formulario');
         }
         //ahora le devolvemos la vista del formulario
@@ -95,8 +92,16 @@ class ArticuloController extends AbstractController
         
     }
 
-    
-    
-    
+    #[Route("/articulos/{categoria}",name:'filtrado')]
+    public function filtrar(ManagerRegistry $doctrine,String $categoria, Request $request): Response { 
+
+        $entityManager=$doctrine->getManager();
+        $articulo = $entityManager->getRepository(Articulo::class)->findByCategoria($categoria); 
+        
+        //ahora le devolvemos la vista del formulario
+        return $this-> renderForm('listadoArticulos.html.twig',['articulos'=> $articulo,]); 
+        
+    }
+
 
 }

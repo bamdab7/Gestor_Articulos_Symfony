@@ -22,19 +22,19 @@ class ArticuloRepository extends ServiceEntityRepository
     // /**
     //  * @return Articulo[] Returns an array of Articulo objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByCategoria($categoria)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('a.categoria = :categoria')
+            ->setParameter('categoria', $categoria)
+          //  ->orderBy('a.id', 'ASC')
+          //  ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Articulo
