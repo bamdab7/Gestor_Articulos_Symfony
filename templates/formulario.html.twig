@@ -3,6 +3,21 @@
 {% block title %}Formulario{% endblock %}
 
 {% block body %}
-        <h1 class="display-3">FORMULARIO</h1>
-        {{form(form)}}
+
+        {{form_start(form)}} <!--mostramos el fromulario el comienzo -->
+        {{ form_widget(form) }}
+        <!-- mostramos los botones creados por nosotros mismos-->
+
+        <div class="row mb-4 d-flex justify-content-end">
+                <div class="col-1 ms-3 d-flex justify-content-end">
+                        <a class="btn btn btn-outline-danger" href="/formulario" role="button">Reset</a>
+                </div>
+                <div class="col-1 ms-3 d-flex justify-content-end">
+                        <button type="submit" value="agregar" class="btn btn btn-outline-success">Agregar</button>
+                </div>
+                <div class="col-1 me-3 d-flex justify-content-end">
+                        <a class="btn btn btn-outline-primary" href="/" role="button">Volver</a>
+                </div>
+        </div>
+        {{form_end(form)}}
 {% endblock %}

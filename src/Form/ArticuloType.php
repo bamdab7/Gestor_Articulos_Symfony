@@ -39,7 +39,7 @@ class ArticuloType extends AbstractType
                     'Digital'=>'digital',
                 ],
             ])
-            ->add('guardar', SubmitType::class)
+           // ->add('guardar', SubmitType::class)
         ;
     }
 
